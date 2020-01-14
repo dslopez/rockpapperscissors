@@ -6,23 +6,27 @@ import es.davidsantiago.rockpapperscissors.Round.Choise;
 
 public class RoundTest {
 
-	Round round = new Round();
+	private Application application = new Application();
+	Round round = new Round(application);
 
 	@Test
 	public void player1WinsTest() {
 		round.setPlayer1Choise(Choise.PAPPER);
-		assert(round.calculateResult().equals("Player1 wins"));
+		assert (round.calculateResult().equals(Round.PLAYER1_WINS));
+		assert (application.getTotalWinsFirstPlayer() == 1);
 	}
-	
+
 	@Test
 	public void player2WinsTest() {
 		round.setPlayer1Choise(Choise.SCISSORS);
-		assert(round.calculateResult().equals("Player2 wins"));
+		assert (round.calculateResult().equals(Round.PLAYER2_WINS));
+		assert (application.getTotalWinsSecondPlayer() == 1);
 	}
-	
+
 	@Test
 	public void drawTest() {
 		round.setPlayer1Choise(Choise.ROCK);
-		assert(round.calculateResult().equals("DRAW"));
+		assert (round.calculateResult().equals(Round.DRAW));
+		assert (application.getTotalDraws() == 1);
 	}
 }
