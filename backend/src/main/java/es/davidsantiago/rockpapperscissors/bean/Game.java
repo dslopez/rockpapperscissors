@@ -1,4 +1,4 @@
-package es.davidsantiago.rockpapperscissors;
+package es.davidsantiago.rockpapperscissors.bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Random;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 
-import es.davidsantiago.rockpapperscissors.Round.Choise;
+import es.davidsantiago.rockpapperscissors.bean.Round.Choise;
 
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class Game {
@@ -18,6 +18,7 @@ public class Game {
 	public Game(Application application) {
 		super();
 		this.application = application;
+		this.application.getGamesMap().put("game" + this.application.getGamesMap().size() + 1, this);
 	}
 
 	public List<Round> getRounds() {
@@ -34,7 +35,7 @@ public class Game {
 	public void playRound() {
 		Round round = new Round(application);
 		round.setPlayer1Choise(getRandomChoise());
-		round.calculateResult();
+		round.setResult(round.calculateResult());
 		this.getRounds().add(round);
 		application.setTotalRoundsPlayed(application.getTotalRoundsPlayed() + 1);
 	}
@@ -75,4 +76,7 @@ public class Game {
 		this.rounds = new ArrayList<Round>();
 	}
 
+	public Integer getActualRound() {
+		return this.getRounds().size() + 1;
+	}
 }

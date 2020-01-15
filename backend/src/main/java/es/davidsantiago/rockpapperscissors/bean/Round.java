@@ -1,4 +1,4 @@
-package es.davidsantiago.rockpapperscissors;
+package es.davidsantiago.rockpapperscissors.bean;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +16,7 @@ public class Round {
 
 	private Choise player1Choise;
 	private Choise player2Choise = Choise.ROCK;
+	private String result;
 	private Application application;
 
 	public Round(Application application) {
@@ -53,6 +54,14 @@ public class Round {
 
 	public void setPlayer2Choise(Choise player2Choise) {
 		this.player2Choise = player2Choise;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
 	}
 
 }

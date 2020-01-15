@@ -1,4 +1,6 @@
-package es.davidsantiago.rockpapperscissors;
+package es.davidsantiago.rockpapperscissors.bean;
+
+import java.util.HashMap;
 
 public class Application {
 
@@ -7,28 +9,48 @@ public class Application {
 	private Integer totalWinsSecondPlayer = 0;
 	private Integer totalDraws = 0;
 
+	private HashMap<String, Game> gamesMap;
+
 	public Integer getTotalRoundsPlayed() {
 		return totalRoundsPlayed;
 	}
+
 	public void setTotalRoundsPlayed(Integer totalRoundsPlayed) {
 		this.totalRoundsPlayed = totalRoundsPlayed;
 	}
+
 	public Integer getTotalWinsFirstPlayer() {
 		return totalWinsFirstPlayer;
 	}
+
 	public void setTotalWinsFirstPlayer(Integer totalWinsFirstPlayer) {
 		this.totalWinsFirstPlayer = totalWinsFirstPlayer;
 	}
+
 	public Integer getTotalWinsSecondPlayer() {
 		return totalWinsSecondPlayer;
 	}
+
 	public void setTotalWinsSecondPlayer(Integer totalWinsSecondPlayer) {
 		this.totalWinsSecondPlayer = totalWinsSecondPlayer;
 	}
+
 	public Integer getTotalDraws() {
 		return totalDraws;
 	}
+
 	public void setTotalDraws(Integer totalDraws) {
 		this.totalDraws = totalDraws;
+	}
+
+	public HashMap<String, Game> getGamesMap() {
+		if (gamesMap == null) {
+			return new HashMap<String, Game>();
+		}
+		return gamesMap;
+	}
+
+	public void setGamesMap(HashMap<String, Game> gamesMap) {
+		this.gamesMap = gamesMap;
 	}
 }
