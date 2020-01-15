@@ -1,13 +1,17 @@
-package es.davidsantiago.rockpapperscissors;
+package es.davidsantiago.rockpapperscissors.beans;
 
 import org.junit.Test;
+
+import es.davidsantiago.rockpapperscissors.bean.Application;
+import es.davidsantiago.rockpapperscissors.bean.Game;
+import es.davidsantiago.rockpapperscissors.bean.Round;
 
 public class GameTest {
 	private Application application = new Application();
 	private Game game = new Game(application);
 
 	@Test
-	public void playRoundTest() {
+	public void playRound() {
 		assert (game.getRounds() != null);
 		assert (game.getRounds().isEmpty());
 
@@ -19,7 +23,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void restartGameTest() {
+	public void restartGame() {
 		game.getRounds().add(new Round(new Application()));
 		game.restart();
 		assert (game.getRounds().isEmpty());

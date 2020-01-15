@@ -1,6 +1,8 @@
-package es.davidsantiago.rockpapperscissors;
+package es.davidsantiago.rockpapperscissors.beans;
 
 import org.junit.Test;
+
+import es.davidsantiago.rockpapperscissors.bean.Application;
 
 public class ApplicationTest {
 
