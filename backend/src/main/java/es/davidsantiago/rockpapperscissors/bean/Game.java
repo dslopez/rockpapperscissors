@@ -11,14 +11,16 @@ import es.davidsantiago.rockpapperscissors.bean.Round.Choise;
 
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class Game {
+	public static final String KEY_PREFIX = "game";
 	private List<Round> rounds;
-
+	private String id;
 	private Application application;
 
 	public Game(Application application) {
 		super();
 		this.application = application;
-		this.application.getGamesMap().put("game" + this.application.getGamesMap().size() + 1, this);
+		this.setId(KEY_PREFIX + (this.application.getGamesMap().size() + 1));
+		this.application.getGamesMap().put(this.getId(), this);
 	}
 
 	public List<Round> getRounds() {
@@ -73,10 +75,18 @@ public class Game {
 	}
 
 	public void restart() {
-		this.rounds = new ArrayList<Round>();
+		this.rounds.clear();
 	}
 
 	public Integer getActualRound() {
 		return this.getRounds().size() + 1;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

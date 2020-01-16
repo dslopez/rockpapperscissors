@@ -11,6 +11,13 @@ public class GameTest {
 	private Game game = new Game(application);
 
 	@Test
+	public void createNewGame() {
+		String key = Game.KEY_PREFIX + "1";
+		assert (key.equals(game.getId()));
+		assert (application.getGamesMap().get(key).equals(game));
+	}
+
+	@Test
 	public void playRound() {
 		assert (game.getRounds() != null);
 		assert (game.getRounds().isEmpty());

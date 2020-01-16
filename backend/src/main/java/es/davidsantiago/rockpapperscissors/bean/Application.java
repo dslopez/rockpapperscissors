@@ -9,7 +9,7 @@ public class Application {
 	private Integer totalWinsSecondPlayer = 0;
 	private Integer totalDraws = 0;
 
-	private HashMap<String, Game> gamesMap;
+	private HashMap<String, Game> gamesMap = new HashMap<String, Game>();
 
 	public Integer getTotalRoundsPlayed() {
 		return totalRoundsPlayed;
@@ -44,9 +44,6 @@ public class Application {
 	}
 
 	public HashMap<String, Game> getGamesMap() {
-		if (gamesMap == null) {
-			return new HashMap<String, Game>();
-		}
 		return gamesMap;
 	}
 
