@@ -1,0 +1,30 @@
+
+<h1 class="display-4 text-center">Rock papper scissors</h1>
+
+<table class="table table-dark">
+  <tbody>
+    <tr>
+      <th scope="row">Total Rounds Played</th>
+      <td>{{application.totalRoundsPlayed}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Total Wins for 1st player</th>
+      <td>{{application.totalWinsFirstPlayer}}</td>
+     
+    </tr>
+
+    <tr>
+      <th scope="row">Total Wins for 2st player</th>
+      <td>{{application.totalWinsSecondPlayer}}</td>
+     
+    </tr>
+
+    <tr>
+      <th scope="row">Total Draws</th>
+      <td>{{application.totalDraws}}</td>
+     
+    </tr>
+  </tbody>
+</table>
+
+<button routerLink="newGame">New Game</button>
