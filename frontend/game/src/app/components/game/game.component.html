@@ -1,7 +1,6 @@
 
-<button >Play Round</button>
-{{game.rounds}}
-{{game.id}}
+<button class="btn btn-success" (click)=playRound()>Play Round</button>
+
 <p style="text-align: right;">Total Rounds Played -> {{game.roundsPlayed}}</p>
 
 <table class="table table-striped table-dark">
@@ -23,5 +22,5 @@
   </tbody>
 </table>
 
-<button routerLink="">Restart Game</button>
-<button routerLink="">End Game</button>
+<button (click)=restart() class="btn btn-warning">Restart Game</button>
+<button routerLink="" class="btn btn-danger">End Game</button>

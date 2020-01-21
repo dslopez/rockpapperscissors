@@ -27,20 +27,20 @@ responseData;
   	private http: HttpClient
   ) { }
 
+  getGame$(): Observable<Game> {
+    return this.game$.asObservable();
+  }
+
   public newGame() { 	
     this.game = new Game();
     console.log('sending post request to ' +  apiUrl);
-  	this.responseData = this.http.post<Game>(apiUrl, {})
-  	.subscribe(
+  	this.http.post<Game>(apiUrl, {})
+  	 .subscribe(
         (val) => {
             console.log("POST call successful value returned in body", 
                         val);
-                        console.log(this.game);
-            this.game['roundsPlayed'] = val['roundsPlayed'];
-            this.game['rounds'] = val['rounds'];
-            this.game['id'] = val['id'];
-            console.log(this.game.roundsPlayed);
-            console.log( val['roundsPlayed']);
+            this.copyData(val);
+
         },
         response => {
             console.log("POST call in error", response);
@@ -53,8 +53,53 @@ responseData;
 
   }	
 
-  getGame$(): Observable<Game> {
-  	return this.game$.asObservable();
+  public playRound(gameId : string) {  
+    this.game = new Game();
+    console.log('sending put request to ' +  apiUrl);
+    this.http.put<Game>(apiUrl + '/' + gameId + '/playRound', {})
+    .subscribe(
+        (val) => {
+            console.log("PUT call successful value returned in body", 
+                        val);
+            this.copyData(val);
+
+        },
+        response => {
+            console.log("PUT call in error", response);
+        },
+        () => {
+            console.log("The PUT observable is now completed.");
+            this.game$.next(this.game);
+        });
+
+
   }
 
+  public restartGame(gameId : string) {  
+    this.game = new Game();
+    console.log('sending put request to ' +  apiUrl);
+    this.http.put<Game>(apiUrl + '/' + gameId + '/restart', {})
+    .subscribe(
+        (val) => {
+            console.log("PUT call successful value returned in body", 
+                        val);
+            this.copyData(val);
+
+        },
+        response => {
+            console.log("PUT call in error", response);
+        },
+        () => {
+            console.log("The PUT observable is now completed.");
+            this.game$.next(this.game);
+        });
+
+
+  }
+
+  private copyData(val : Object) {
+    this.game['roundsPlayed'] = val['roundsPlayed'];
+    this.game['rounds'] = val['rounds'];
+    this.game['id'] = val['id'];
+  }
 }

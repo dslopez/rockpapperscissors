@@ -21,9 +21,15 @@ export class GameComponent implements OnInit {
   		this.game$.subscribe(game => this.game = game);
   		this.gameService.newGame();
 		
-		//console.log('game id=' + this.game.id);
-		//console.log(this.game.roundsPlayed);
-		//console.log('game.roundsPlayed=' + this.game.roundsPlayed);
 	}
 
+	playRound(){
+    	console.log("function playRound called");
+    	this.gameService.playRound(this.game.id);
+  	}
+
+  	restart(){
+    	console.log("function restart called");
+    	this.gameService.restartGame(this.game.id);
+  	}
 }
