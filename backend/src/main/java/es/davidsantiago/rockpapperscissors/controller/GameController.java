@@ -3,6 +3,7 @@ package es.davidsantiago.rockpapperscissors.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,6 +15,7 @@ import es.davidsantiago.rockpapperscissors.bean.Application;
 import es.davidsantiago.rockpapperscissors.bean.Game;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class GameController {
 
 	@Autowired
@@ -26,10 +28,11 @@ public class GameController {
 
 	@PostMapping(value = "/game")
 	public ResponseEntity<Game> newGame() {
+		System.out.println("POST game called");
 		Game game = new Game(application);
 		return new ResponseEntity<Game>(game, HttpStatus.CREATED);
 	}
-
+	
 	@PutMapping(value = "/game/{id}/playRound")
 	public ResponseEntity<Game> playRound(@PathVariable("id") int id) {
 		Game game = application.getGamesMap().get(Game.KEY_PREFIX + id);

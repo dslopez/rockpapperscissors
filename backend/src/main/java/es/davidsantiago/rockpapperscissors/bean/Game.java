@@ -78,8 +78,8 @@ public class Game {
 		this.rounds.clear();
 	}
 
-	public Integer getActualRound() {
-		return this.getRounds().size() + 1;
+	public Integer getRoundsPlayed() {
+		return this.getRounds().size();
 	}
 
 	public String getId() {

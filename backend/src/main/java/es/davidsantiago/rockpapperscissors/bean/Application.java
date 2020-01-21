@@ -2,6 +2,9 @@ package es.davidsantiago.rockpapperscissors.bean;
 
 import java.util.HashMap;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Application {
 
 	private Integer totalRoundsPlayed = 0;

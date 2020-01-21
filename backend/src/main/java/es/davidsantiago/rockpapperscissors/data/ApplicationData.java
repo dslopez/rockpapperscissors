@@ -1,11 +1,26 @@
 package es.davidsantiago.rockpapperscissors.data;
 
+import java.util.Collection;
+
+import es.davidsantiago.rockpapperscissors.bean.Game;
+
 public class ApplicationData {
 	private Integer totalRoundsPlayed = 0;
 	private Integer totalWinsFirstPlayer = 0;
 	private Integer totalWinsSecondPlayer = 0;
 	private Integer totalDraws = 0;
+	private Collection<Game> games;
 
+	public ApplicationData(Integer totalRoundsPlayed, Integer totalWinsFirstPlayer, Integer totalWinsSecondPlayer,
+			Integer totalDraws, Collection<Game> games) {
+		super();
+		this.totalRoundsPlayed = totalRoundsPlayed;
+		this.totalWinsFirstPlayer = totalWinsFirstPlayer;
+		this.totalWinsSecondPlayer = totalWinsSecondPlayer;
+		this.totalDraws = totalDraws;
+		this.setGames(games);
+	}
+	
 	public Integer getTotalRoundsPlayed() {
 		return totalRoundsPlayed;
 	}
@@ -37,14 +52,13 @@ public class ApplicationData {
 	public void setTotalDraws(Integer totalDraws) {
 		this.totalDraws = totalDraws;
 	}
+	
+	public Collection<Game> getGames() {
+		return games;
+	}
 
-	public ApplicationData(Integer totalRoundsPlayed, Integer totalWinsFirstPlayer, Integer totalWinsSecondPlayer,
-			Integer totalDraws) {
-		super();
-		this.totalRoundsPlayed = totalRoundsPlayed;
-		this.totalWinsFirstPlayer = totalWinsFirstPlayer;
-		this.totalWinsSecondPlayer = totalWinsSecondPlayer;
-		this.totalDraws = totalDraws;
+	public void setGames(Collection<Game> games) {
+		this.games = games;
 	}
 
 }

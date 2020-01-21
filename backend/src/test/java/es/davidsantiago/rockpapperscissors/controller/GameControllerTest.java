@@ -53,7 +53,7 @@ public class GameControllerTest {
 	public void getGame() throws Exception {
 		this.mockMvc
 				.perform(get("/game").param("id", "1").characterEncoding("utf-8").accept(MediaType.APPLICATION_JSON))
-				.andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.actualRound", is(2)))
+				.andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.roundsPlayed", is(1)))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.rounds").exists())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.rounds[*].result").isNotEmpty());
 
